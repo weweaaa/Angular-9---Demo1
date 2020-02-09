@@ -174,8 +174,21 @@
         <div class="widget search">
           <div class="widget-content">
             <div id="searchbox">
-              <input type="text" placeholder="請輸入搜尋關鍵字" accesskey="s" />
+              <input
+                (wheel)="wheelChange($event)"
+                (paste)="userPaste($event)"
+                (copy)="userCopy($event)"
+                type="text"
+                placeholder="請輸入搜尋關鍵字"
+                accesskey="s"
+              />
               <input type="button" value="搜尋" id="searchbutton" />
+              <br />
+              <input
+                (keydown)="userKeydown($event)"
+                placeholder="測試用"
+                type="text"
+              />
             </div>
           </div>
         </div>
@@ -417,3 +430,8 @@
 </section>
 <!-- CONTAINER END -->
 <app-footer></app-footer>
+
+<!-- 使用 pre 這個 tag 可以讓呈現的格式依據物件內容格式呈現 -->
+<pre
+  >{{ data | json }}
+</pre>

@@ -1,6 +1,10 @@
 <!-- Header START -->
 <header class="header">
-  <div class="navbar navbar-inverse" role="navigation">
+  <div
+    [innerText]="'jcccccccc'"
+    class="navbar navbar-inverse"
+    role="navigation"
+  >
     <div class="container">
       <div class="navbar-header">
         <button
@@ -30,6 +34,7 @@
   <div class="title-wrapper">
     <div class="container">
       <img
+        (click)="clickTest($event)"
         src="./assets/images/logo.png"
         class="pull-left logo"
         alt="The Will Will Web"
