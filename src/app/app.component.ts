@@ -4,6 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 
+// Metadata(元數據、中繼資料) => 裝飾器 Decorator
+
+// Angular 架構剖析
+// templete <--> Metadata <--> component
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
