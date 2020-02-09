@@ -7,7 +7,7 @@
       <div id="ctl00_cphBody_PostList1_posts" class="posts">
         <!-- Article START-->
         <article
-          *ngFor="let item of data; let i = index;"
+          *ngFor="let item of (data$ | async); let i = index;"
           class="post"
           id="post{{ i }}"
         >
@@ -304,5 +304,7 @@
 
 <!-- 使用 pre 這個 tag 可以讓呈現的格式依據物件內容格式呈現 -->
 <pre
-  >{{ data | json }}
+  >
+  <!-- {{ data | json }} -->
+  {{data$ | async}}
 </pre>

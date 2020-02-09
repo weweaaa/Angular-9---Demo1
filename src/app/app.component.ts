@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,16 +11,26 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'demo1';
-  data: any;
+  // data: any;
+  data$: Observable<any>;
 
   constructor(private http: HttpClient) {
 
   }
 
   ngOnInit(): void {
-    this.getData().subscribe((value) => {
-      this.data = value;
-    });
+
+    // 改為使用 將 Observable 傳到 templete 的作法，
+    // 如果直接將 Observable  傳到 templete 使用 async 訂閱 http get Observable
+    // 再載入畫面時，因為在 templete 我們有兩段使用到 data$ 的資料，這樣會造成兩次呼叫 http get
+    // 原本在 directive 只會做一次的 subscribe，但是在 templete 兩次 data$ | async 就會有兩次的 subscribe
+    // 所以如果要避免這種狀況，且又想把 Observable 傳到 templete 使用的話，
+    // 可以在 Observable 後面加上 pipe()，在 pipe 裡面呼叫 Rxjs 的 share 的方法
+    // 使用 Rxjs share 方法需要 import rxjs/operators
+    this.data$ = this.getData().pipe(share());
+    // this.getData().subscribe((value) => {
+    //   this.data = value;
+    // });
   }
 
   /**
