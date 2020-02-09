@@ -70,16 +70,14 @@ export class AppComponent implements OnInit {
   }
 
 
+  /**
+   * 抓取組合按鍵
+   */
   userKeydown(event: KeyboardEvent) {
-    // console.log('user keydown =>', event);
-    if (!event.shiftKey && (event.key === 'Enter' || event.key === 'Tab')) {
-      event.preventDefault();
-      console.log('抓取到使用者組合鍵');
-    }
+    // templete 事件寫法，必須使用以下寫法
+    // keyup.control.a
 
-    // if (event.ctrlKey && (event.key === 'KeyA' || event.key === 'KeyR')) {
-
-    // }
+    console.log('user keydown =>', event);
 
     // event.preventDefault();
   }
