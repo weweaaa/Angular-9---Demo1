@@ -1,9 +1,4 @@
 <!-- Article START-->
-<article
-*ngFor="let item of (data$ | async); let i = index;"
-class="post"
-id="post{{ i }}"
->
 <header class="post-header">
   <h2 class="post-title">
     <a [href]="item.href">{{ item.title }}</a>
@@ -26,5 +21,5 @@ id="post{{ i }}"
   </div>
 </header>
 <section class="post-body text" [innerHTML]="item.summary"></section>
-</article>
+
 <!-- Article END-->

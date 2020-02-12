@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ArticleComponent implements OnInit {
 
-  @Input() data$: Observable<any>;
+  @Input() item: any;
 
   constructor() { }
 

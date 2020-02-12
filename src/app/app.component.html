@@ -1,11 +1,16 @@
-<app-header [titleName]="title" (changeTitle)="changeTitleName($event)"></app-header>
+<app-header
+  [titleName]="title"
+  (changeTitle)="changeTitleName($event)"
+></app-header>
 <!-- CONTAINER START-->
 <section class="container">
   <div class="row">
     <section class="col-md-8 content-wrapper">
       <div id="ctl00_cphBody_divError"></div>
       <div id="ctl00_cphBody_PostList1_posts" class="posts">
-        <app-article [data$]="data$"></app-article>
+        <article *ngFor="let item of data$ | async; let i = index;" class="post"  id="post{{ i }}">
+          <app-article [item]="item"></app-article>
+        </article>
       </div>
     </section>
 
@@ -274,8 +279,7 @@
 <app-footer></app-footer>
 
 <!-- 使用 pre 這個 tag 可以讓呈現的格式依據物件內容格式呈現 -->
-<pre
-  >
+<pre>
   <!-- {{ data | json }} -->
   {{data$ | async}}
 </pre>
