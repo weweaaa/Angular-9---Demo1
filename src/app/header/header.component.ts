@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() titleName: string;
+
+  // 錯誤的事件宣告方式
+  // @Output() changeTitle: EventEmitter<string>;
+  // 要實際 new 出事件物件出來
+  @Output() changeTitle = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
+    if (this.titleName === undefined) {
+      this.titleName = '記載著 Will 在網路世界的學習心得與技術分享';
+    }
   }
 
   clickTest(event: MouseEvent) {
@@ -19,5 +29,9 @@ export class HeaderComponent implements OnInit {
     } else if (event.altKey === true) {
       console.log('使用者組合了 alt 鍵');
     }
+  }
+
+  changeTitleName() {
+    this.changeTitle.emit(this.titleName + '!');
   }
 }

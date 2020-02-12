@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.title = 'demo1';
+
     // 改為使用 將 Observable 傳到 templete 的作法，
     // 如果直接將 Observable  傳到 templete 使用 async 訂閱 http get Observable
     // 再載入畫面時，因為在 templete 我們有兩段使用到 data$ 的資料，這樣會造成兩次呼叫 http get
@@ -84,5 +86,9 @@ export class AppComponent implements OnInit {
 
   getData() {
     return this.http.get('http://localhost:4200/api/articles.json');
+  }
+
+  changeTitleName(event: any) {
+    this.title = event;
   }
 }
