@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SocialIconsComponent } from './header/social-icons/social-icons.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SocialIconsComponent
+    SocialIconsComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
